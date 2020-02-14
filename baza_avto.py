@@ -36,7 +36,7 @@ def vigruzka():
             f.write(text)
 
 
-def poisk():
+def poisk(event):
     input_text = txt_poisk.get()
     if len(input_text) == 0:
         return
@@ -117,6 +117,7 @@ lbl_out = tkinter.Label(frame1, text = "Ведите номер авто", font 
 lbl_out.grid(column = 1, row = 2, columnspan = 2)
 
 txt_poisk = tkinter.Entry(frame1, width = 19, font = 'Arial 20')
+txt_poisk.bind('<Return>', poisk)
 txt_poisk.grid(column = 1, row = 3, columnspan = 2)
 
 btn_poisk = tkinter.Button(frame1,text = "Искать!", command = poisk)
