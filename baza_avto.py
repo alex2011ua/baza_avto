@@ -1,9 +1,10 @@
+import re
 import tkinter
 from tkinter import scrolledtext
 from tkinter import messagebox
 from tkinter import INSERT
 from tkinter import END
-import re
+
 
 print('cd')
 
@@ -11,9 +12,10 @@ dict_baza = {}
 
 
 def collor_window(collor):
-    # lbl_poisk.configure(bg = collor)
+    lbl_poisk.configure(bg = collor)
     # lbl_liniya.configure(bg = collor)
-    # lbl.configure(bg = collor)
+    #lbl.configure(bg = collor)
+    lbl_out.configure(bg = collor)
     lbl_poisk.configure(bg = collor)
     # window.configure(bg = collor)
     window.configure(bg = 'white')
@@ -37,7 +39,7 @@ def vigruzka():
             f.write(text)
 
 
-def poisk(event):
+def poisk(event=0):
     input_text = txt_poisk.get()
     if len(input_text) == 0:
         return
@@ -100,7 +102,7 @@ def dell_baza():
 zagruzka()
 window = tkinter.Tk()
 window.title('База автомобилей')
-window.geometry('330x400+100+100')  # ширина=600, высота=600, x=100, y=100
+window.geometry('300x380+100+100')  # ширина=600, высота=600, x=100, y=100
 window.configure(bg = '')
 
 frame1 = tkinter.Frame(window, bg = 'green', bd = 8)
