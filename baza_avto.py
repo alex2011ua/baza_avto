@@ -4,7 +4,7 @@ from tkinter import messagebox
 from tkinter import INSERT
 from tkinter import END
 import re
-
+print('cd')
 
 dict_baza = {}
 
