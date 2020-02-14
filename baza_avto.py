@@ -1,6 +1,6 @@
 import re
 import tkinter
-from tkinter import scrolledtext
+#from tkinter import scrolledtext
 from tkinter import messagebox
 from tkinter import INSERT
 from tkinter import END
@@ -90,7 +90,7 @@ def dell_baza():
         if answer == True:
             a = dict_baza.pop(input_text)
             lbl_out.configure(text = "Удалено!" + str(a))
-            collor_window('yellow')
+            #collor_window('yellow')
             txt_vivid = 'Удален номер машины:' + input_text + '\n'
             vigruzka()
 
@@ -106,7 +106,7 @@ window.geometry('300x380+100+100')  # ширина=600, высота=600, x=100,
 window.configure(bg = '')
 
 frame1 = tkinter.Frame(window, bg = 'green', bd = 8)
-frame2 = tkinter.Frame(window, bg = 'red', bd = 5)
+frame2 = tkinter.Frame(window, bg = 'grey', bd = 5)
 # кнопка с указанием родительского виджета и несколькими аргументами
 frame1.grid(column = 1, row = 1)
 frame2.grid(column = 1, row = 2)
