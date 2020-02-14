@@ -5,11 +5,7 @@ from tkinter import messagebox
 from tkinter import INSERT
 from tkinter import END
 
-
-print('cd')
-
 dict_baza = {}
-
 
 def collor_window(collor):
     lbl_poisk.configure(bg = collor)
@@ -42,6 +38,9 @@ def vigruzka():
 def poisk(event=0):
     input_text = txt_poisk.get()
     if len(input_text) == 0:
+        collor_window('grey')
+        lbl_out.configure(text = "Введите номер")
+        text_out.delete('1.0', END)
         return
     text_out.delete('1.0', END)
     input_text_upper = input_text.upper().strip()
@@ -87,12 +86,13 @@ def dell_baza():
     text_out.delete('1.0', END)
     input_text = input_text.upper().strip()
     if input_text in dict_baza:
-        a = dict_baza.pop(input_text)
-        lbl_out.configure(text = "Удалено!" + str(a))
-        collor_window('yellow')
-        txt_vivid = 'Удален номер машины:' + input_text + '\n'
-
-        vigruzka()
+        answer = messagebox.askyesno(title = "Внимание!", message = "Удалить авто из базы автомобилей?")
+        if answer == True:
+            a = dict_baza.pop(input_text)
+            lbl_out.configure(text = "Удалено!" + str(a))
+            collor_window('yellow')
+            txt_vivid = 'Удален номер машины:' + input_text + '\n'
+            vigruzka()
 
     else:
         lbl_out.configure(text = "Нет записи")
@@ -123,7 +123,7 @@ txt_poisk.grid(column = 1, row = 3, columnspan = 2)
 btn_poisk = tkinter.Button(frame1, text = "Искать!", command = poisk)
 btn_poisk.grid(column = 1, row = 4)
 
-btn_dell_1 = tkinter.Button(frame1, text = "Удалить!", command = dell_baza)
+btn_dell_1 = tkinter.Button(frame1, text = "Удалить авто из базы!", command = dell_baza)
 btn_dell_1.grid(column = 2, row = 4)
 
 text_out = tkinter.Text(frame1, height = 5, width = 22, font = 'Arial 14')
