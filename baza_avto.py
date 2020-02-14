@@ -4,19 +4,20 @@ from tkinter import messagebox
 from tkinter import INSERT
 from tkinter import END
 import re
+
 print('cd')
 
 dict_baza = {}
 
 
 def collor_window(collor):
-    #lbl_poisk.configure(bg = collor)
-    #lbl_liniya.configure(bg = collor)
-    #lbl.configure(bg = collor)
-    lbl_poisk.configure(bg=collor)
-    #window.configure(bg = collor)
+    # lbl_poisk.configure(bg = collor)
+    # lbl_liniya.configure(bg = collor)
+    # lbl.configure(bg = collor)
+    lbl_poisk.configure(bg = collor)
+    # window.configure(bg = collor)
     window.configure(bg = 'white')
-    frame1.configure(bg =collor)
+    frame1.configure(bg = collor)
 
 
 def zagruzka():  # загрузка из файла и создание словаря
@@ -45,22 +46,19 @@ def poisk(event):
     if input_text_upper in dict_baza:
         text_out.delete('1.0', END)
         lbl_out.configure(text = "Есть: ")
-        text_out.insert(1.0, str(dict_baza[input_text_upper]+'\n'))
+        text_out.insert(1.0, str(dict_baza[input_text_upper] + '\n'))
         collor_window('green')
     else:
         lbl_out.configure(text = "------Нет информации----")
         collor_window('red')
-        pattern = '(.*' + input_text + '.*)|(.*'+input_text.upper()+'.*)'
+        pattern = '(.*' + input_text + '.*)|(.*' + input_text.upper() + '.*)'
         for key, value in dict_baza.items():
-            po = str(key+value)
+            po = str(key + value)
             if re.search(pattern, po):
                 collor_window('blue')
                 lbl_out.configure(text = "__Есть похожее__ ")
-                txt_vivod=str(key+ ' ' +value+'\n')
+                txt_vivod = str(key + ' ' + value + '\n')
                 text_out.insert(1.0, txt_vivod)
-
-
-
 
 
 def add_baza():
@@ -105,11 +103,11 @@ window.title('База автомобилей')
 window.geometry('330x400+100+100')  # ширина=600, высота=600, x=100, y=100
 window.configure(bg = '')
 
-frame1=tkinter.Frame(window,bg='green',bd=8)
-frame2=tkinter.Frame(window,bg='red',bd=5)
+frame1 = tkinter.Frame(window, bg = 'green', bd = 8)
+frame2 = tkinter.Frame(window, bg = 'red', bd = 5)
 # кнопка с указанием родительского виджета и несколькими аргументами
-frame1.grid(column = 1,row = 1)
-frame2.grid(column = 1,row = 2)
+frame1.grid(column = 1, row = 1)
+frame2.grid(column = 1, row = 2)
 lbl_poisk = tkinter.Label(frame1, text = 'Поиск авто в базе ', font = 'Arial 16')
 lbl_poisk.grid(column = 1, row = 1, columnspan = 3, rowspan = 1)
 
@@ -120,16 +118,14 @@ txt_poisk = tkinter.Entry(frame1, width = 19, font = 'Arial 20')
 txt_poisk.bind('<Return>', poisk)
 txt_poisk.grid(column = 1, row = 3, columnspan = 2)
 
-btn_poisk = tkinter.Button(frame1,text = "Искать!", command = poisk)
+btn_poisk = tkinter.Button(frame1, text = "Искать!", command = poisk)
 btn_poisk.grid(column = 1, row = 4)
 
-btn_dell_1 = tkinter.Button(frame1,text = "Удалить!", command = dell_baza)
+btn_dell_1 = tkinter.Button(frame1, text = "Удалить!", command = dell_baza)
 btn_dell_1.grid(column = 2, row = 4)
 
 text_out = tkinter.Text(frame1, height = 5, width = 22, font = 'Arial 14')
-text_out.grid(column = 1, row = 5,columnspan = 3)
-
-
+text_out.grid(column = 1, row = 5, columnspan = 3)
 
 lbl = tkinter.Label(frame2, text = "Добавление авто!", font = 'Arial 16')
 lbl.grid(column = 1, row = 6, columnspan = 2)
@@ -140,12 +136,10 @@ txt_add_nomber.grid(column = 1, row = 7, columnspan = 2)
 lbl_add_info = tkinter.Label(frame2, text = "Описание:", font = 'Arial 16')
 lbl_add_info.grid(column = 1, row = 9)
 
-txt_add_info = tkinter.Entry(frame2,  width = 15, font = 'Arial 16')
+txt_add_info = tkinter.Entry(frame2, width = 15, font = 'Arial 16')
 txt_add_info.grid(column = 2, row = 9)
 
 btn = tkinter.Button(frame2, text = "Добавить!", command = add_baza)
 btn.grid(column = 1, row = 10, columnspan = 2)
-
-
 
 window.mainloop()
