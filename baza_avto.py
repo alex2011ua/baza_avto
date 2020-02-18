@@ -19,13 +19,20 @@ def collor_window(collor):
 
 
 def zagruzka():  # загрузка из файла и создание словаря
-    with open("baza_avto.txt") as f:
-        for line in f:
-            list_sl = line.rstrip().split('\t')
-            if len(list_sl) > 1:
-                dict_baza[list_sl[0]] = list_sl[1]
-            else:
-                dict_baza[list_sl[0]] = list_sl[0]
+    try:
+        with open("baza_avto.txt") as f:
+            for line in f:
+                list_sl = line.rstrip().split('\t')
+                if len(list_sl) > 1:
+                    dict_baza[list_sl[0]] = list_sl[1]
+                else:
+                    dict_baza[list_sl[0]] = list_sl[0]
+    except FileNotFoundError:
+        my_file = open("baza_avto.txt", "w")
+        my_file.write('TEST\ttest1')
+        my_file.close()
+        zagruzka()
+
 
 
 def vigruzka():
