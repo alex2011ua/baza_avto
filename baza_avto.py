@@ -1,8 +1,6 @@
 import re
 import tkinter
-# from tkinter import scrolledtext
 from tkinter import messagebox
-from tkinter import INSERT
 from tkinter import END
 
 dict_baza = {}
