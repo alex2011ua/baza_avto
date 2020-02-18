@@ -1,16 +1,17 @@
 import re
 import tkinter
-#from tkinter import scrolledtext
+# from tkinter import scrolledtext
 from tkinter import messagebox
 from tkinter import INSERT
 from tkinter import END
 
 dict_baza = {}
 
+
 def collor_window(collor):
     lbl_poisk.configure(bg = collor)
     # lbl_liniya.configure(bg = collor)
-    #lbl.configure(bg = collor)
+    # lbl.configure(bg = collor)
     lbl_out.configure(bg = collor)
     lbl_poisk.configure(bg = collor)
     # window.configure(bg = collor)
@@ -32,7 +33,6 @@ def zagruzka():  # загрузка из файла и создание слов
         my_file.write('TEST\ttest1')
         my_file.close()
         zagruzka()
-
 
 
 def vigruzka():
@@ -77,7 +77,6 @@ def add_baza():
     if len(list_sl) == 0:
         return
     list_sl = list_sl.upper().strip()
-    txt_vivid = 'Добавлена машина: ' + list_sl + '\n'
 
     if inf1 == '':
         inf1 = '-без описания-'
@@ -94,11 +93,10 @@ def dell_baza():
     input_text = input_text.upper().strip()
     if input_text in dict_baza:
         answer = messagebox.askyesno(title = "Внимание!", message = "Удалить авто из базы автомобилей?")
-        if answer == True:
+        if answer:
             a = dict_baza.pop(input_text)
             lbl_out.configure(text = "Удалено!" + str(a))
-            #collor_window('yellow')
-            txt_vivid = 'Удален номер машины:' + input_text + '\n'
+
             vigruzka()
 
     else:
