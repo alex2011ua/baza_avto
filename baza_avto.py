@@ -3,7 +3,6 @@ import tkinter
 from tkinter import messagebox
 from tkinter import END
 
-
 dict_baza = {}
 def collor_window(collor):
     lbl_poisk.configure(bg = collor)
