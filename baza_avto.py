@@ -5,8 +5,6 @@ from tkinter import END
 
 
 dict_baza = {}
-
-
 def collor_window(collor):
     lbl_poisk.configure(bg = collor)
     # lbl_liniya.configure(bg = collor)
