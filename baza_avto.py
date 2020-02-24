@@ -19,7 +19,7 @@ def collor_window(collor):
 
 def zagruzka():  # загрузка из файла и создание словаря
     try:
-        with open("baza_avto.txt") as f:
+        with open("baza_avto.txt", encoding='utf8') as f:
             for line in f:
                 list_sl = line.rstrip().split('\t')
                 if len(list_sl) > 1:
@@ -27,14 +27,14 @@ def zagruzka():  # загрузка из файла и создание слов
                 else:
                     dict_baza[list_sl[0]] = list_sl[0]
     except FileNotFoundError:
-        my_file = open("baza_avto.txt", "w")
+        my_file = open("baza_avto.txt", "w", encoding='utf8')
         my_file.write('TEST\ttest1')
         my_file.close()
         zagruzka()
 
 
 def vigruzka():
-    with open("baza_avto.txt", "w") as f:
+    with open("baza_avto.txt", "w", encoding='utf8') as f:
         for item in dict_baza:
             text = item + '\t' + dict_baza[item] + '\n'
             f.write(text)
